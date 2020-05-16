@@ -1,0 +1,32 @@
+{
+  "name": "lib-node-coresender",
+  "version": "1.0.0",
+  "description": "Coresender SDK",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "jest",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.demon.fm:ges/lib-node-coresender.git"
+  },
+  "keywords": [
+    "sdk",
+    "coresender",
+    "email"
+  ],
+  "author": "kornel.kedzierski@coresender.com",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.0.0",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.9.2"
+  }
+}
