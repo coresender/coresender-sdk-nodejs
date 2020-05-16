@@ -14,8 +14,6 @@ export class Coresender {
         this.api = new Api(new Http(options), new Auth(accountId, accountSecret), options);
 
         debugLog(`initialized client for accountId = ${accountId}`);
-
-        // todo: version to userAgent from package.json
     }
 
     async simpleEmail(params: SimpleEmail): Promise<any> {

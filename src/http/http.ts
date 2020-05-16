@@ -2,8 +2,10 @@ import {Options} from './dto';
 import {RequestOptions} from '../dto/http';
 import axios from 'axios';
 
+const {version} = require('../../package.json');
+
 export class Http {
-    private readonly userAgent: string = `Coresender/lib-node-coresender/1.0`;
+    private readonly userAgent: string = `Coresender/lib-node-coresender/${version}`;
     private readonly timeout: number = 60 * 1000;
 
     constructor(options: Options = {}) {
