@@ -7,19 +7,19 @@ import {Coresender} from '../src';
 dotenv.config({path: join(__dirname, '../.env')});
 
 const main = async () => {
-    const client = new Coresender(process.env.ACCOUNT_ID, process.env.ACCOUNT_SECRET);
+    const client = new Coresender(process.env.ACCOUNT_ID, process.env.ACCOUNT_SECRET, {baseURL: process.env.BASE_URL});
     const request = client.sendEmailRequest();
 
     request.push({
-        fromEmail: 'kornel@demon.fm',
-        toEmail: 'pl.kornel@gmail.com',
+        fromEmail: process.env.DEFAULT_FROM,
+        toEmail: process.env.DEFAULT_TO,
         subject: 'send_email_request test 1',
         bodyText: 'Hello from send_email_request 1',
     });
 
     request.push({
-        fromEmail: 'kornel@demon.fm',
-        toEmail: 'pl.kornel@gmail.com',
+        fromEmail: process.env.DEFAULT_FROM,
+        toEmail: process.env.DEFAULT_TO,
         subject: 'send_email_request test 2',
         bodyText: 'Hello from send_email_request 2',
     });

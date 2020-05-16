@@ -1,5 +1,5 @@
 import {debuglog} from 'util'
-import {Options, SimpleEmail} from './dto';
+import {Options, SendEmailResponse, SimpleEmail} from './dto';
 import {Http} from '../http';
 import {Auth} from '../auth';
 import {Api, SendEmailItem} from '../api';
@@ -21,7 +21,7 @@ export class Coresender {
         return new SendEmailRequest(this.api);
     }
 
-    async simpleEmail(params: SimpleEmail): Promise<any> {
+    async simpleEmail(params: SimpleEmail): Promise<SendEmailResponse> {
         const item: SendEmailItem = {
             from: {email: params.fromEmail},
             to: [{email: params.toEmail}],
@@ -29,6 +29,17 @@ export class Coresender {
             body: params.bodyType === BodyType.HTML ? {html: params.body} : {text: params.body},
         };
 
-        return this.api.sendEmail([item]);
+        const result = await this.api.sendEmail([item]);
+        const row = result[0];
+
+        // todo: row not empty?
+        // todo: errors map
+
+        return {
+            messageId: row.message_id,
+            customId: row.custom_id,
+            status: row.status,
+            errors: row.errors
+        };
     }
 }

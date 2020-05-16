@@ -1,14 +1,14 @@
 import {RequestOptions} from '../dto/http';
 
-interface Http {
+export interface Http {
     request(options: RequestOptions): Promise<any>
 }
 
-interface Auth {
-   apply(request: RequestOptions): Promise<void>
+export interface Auth {
+    apply(request: RequestOptions): Promise<void>
 }
 
-interface Options {
+export interface Options {
     readonly baseURL?: string;
     readonly version?: string;
 }
@@ -17,16 +17,18 @@ interface SendEmailBody {
     readonly html?: string;
     readonly text?: string;
 }
+
 interface SendEmailTo {
     readonly email: string;
     readonly name?: string;
 }
+
 interface SendEmailFrom {
     readonly email: string;
     readonly name?: string;
 }
 
-interface SendEmailItem {
+export interface SendEmailItem {
     readonly body: SendEmailBody;
     readonly to: SendEmailTo[];
     readonly from: SendEmailFrom;
@@ -38,4 +40,17 @@ interface SendEmailItem {
     readonly list_unsubscribe?: string;
 }
 
-export {Http, Auth, Options, SendEmailItem};
+export type SendEmailStatus = 'accepted' | 'rejected';
+
+export interface SendEmailResponseItem {
+    readonly message_id: string;
+    readonly custom_id: string;
+    readonly status: SendEmailStatus;
+    readonly errors: any[];
+}
+
+export interface SendEmailResponse {
+    readonly data: SendEmailResponseItem[];
+    readonly meta: { [key: string]: any };
+}
+

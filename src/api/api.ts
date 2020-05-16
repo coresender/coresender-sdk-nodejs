@@ -1,4 +1,4 @@
-import {Auth, Http, Options, SendEmailItem} from './dto';
+import {Auth, Http, Options, SendEmailItem, SendEmailResponse, SendEmailResponseItem} from './dto';
 import {RequestOptions} from '../dto/http';
 import {resolve} from 'url';
 import {debuglog} from 'util';
@@ -21,7 +21,7 @@ export class Api {
         this.auth = auth;
     }
 
-    async sendEmail(items: SendEmailItem[]): Promise<any> {
+    async sendEmail(items: SendEmailItem[]): Promise<SendEmailResponseItem[]> {
         const options: RequestOptions = {
             method: 'POST',
             url: resolve(this.baseURL, '/v1/send_email'),
@@ -32,10 +32,7 @@ export class Api {
 
         debugLog('request options=', options);
 
-        // todo: params
-        // todo: response formatter
-        // todo: error handler
-
-        return this.http.request(options);
+        const response = <SendEmailResponse>await this.http.request(options);
+        return response.data;
     }
 }

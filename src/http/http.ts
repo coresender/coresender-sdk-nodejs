@@ -1,5 +1,6 @@
 import {Options} from './dto';
 import {RequestOptions} from '../dto/http';
+import {map} from './map'
 import axios from 'axios';
 
 const {version} = require('../../package.json');
@@ -25,15 +26,15 @@ export class Http {
             timeout: this.timeout,
         };
 
-        // data: T;
-        // status: number;
-        // statusText: string;
-        // headers: any;
-        // config: AxiosRequestConfig;
-        // request?: any;
-
-        // todo: check errors etc.
-
-        return axios(_options);
+        let response;
+        try {
+            response = await axios(_options);
+        } catch (err) {
+            if (err.response) {
+                throw map(err.response.data || {});
+            }
+            throw map(err);
+        }
+        return response.data;
     }
 }

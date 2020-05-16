@@ -21,6 +21,15 @@ export interface EmailItem {
     readonly listUnsubscribe?: string;
 }
 
+export type SendEmailStatus = 'accepted' | 'rejected';
+
+export interface SendEmailResponse {
+    readonly messageId: string;
+    readonly customId: string;
+    readonly status: SendEmailStatus;
+    readonly errors: any[];
+}
+
 export interface Options {
     readonly baseURL?: string;
     readonly userAgent?: string;
