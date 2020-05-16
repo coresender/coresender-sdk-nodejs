@@ -1,1 +1,4 @@
-export {Coresender} from './coresender';
+import {Coresender} from "./coresender";
+import {BodyType} from './dict';
+
+export {Coresender, BodyType};
