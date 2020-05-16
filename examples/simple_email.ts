@@ -1,4 +1,4 @@
-// NODE_DEBUG=coresender node_modules/.bin/ts-node examples/simple_mail.ts
+// NODE_DEBUG=coresender node_modules/.bin/ts-node examples/simple_email.ts
 
 import * as dotenv from 'dotenv';
 import {join} from 'path';
@@ -11,8 +11,8 @@ const main = async () => {
     const params = {
         fromEmail: 'kornel@demon.fm',
         toEmail: 'pl.kornel@gmail.com',
-        subject: 'Hello world',
-        body: '<div>Hello kornel</div>',
+        subject: 'simple_email test',
+        body: '<div>Hello from simple_email</div>',
         bodyType: BodyType.HTML,
     };
 
