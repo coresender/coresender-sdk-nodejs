@@ -21,6 +21,10 @@ export class Api {
         this.auth = auth;
     }
 
+    getBaseURL(): string {
+        return this.baseURL;
+    }
+
     async sendEmail(items: SendEmailItem[]): Promise<SendEmailResponseItem[]> {
         const options: RequestOptions = {
             method: 'POST',

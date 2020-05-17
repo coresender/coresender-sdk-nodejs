@@ -1,2 +1,8 @@
 tsconfig.json
 src
+examples
+tests
+.env.dist
+jest.config.js
+README.md
+tsconfig.js

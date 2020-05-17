@@ -23,11 +23,14 @@
   "author": "kornel.kedzierski@coresender.com",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^25.2.2",
     "dotenv": "^8.2.0",
     "jest": "^26.0.1",
+    "nock": "^12.0.3",
     "ts-jest": "^26.0.0",
     "ts-node": "^8.10.1",
-    "typescript": "^3.9.2"
+    "typescript": "^3.9.2",
+    "uuid": "^8.0.0"
   },
   "dependencies": {
     "axios": "^0.19.2"

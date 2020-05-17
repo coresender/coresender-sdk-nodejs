@@ -20,6 +20,10 @@ export class Coresender {
         debugLog(`initialized client for accountId = ${accountId}`);
     }
 
+    getBaseURL() {
+        return this.api.getBaseURL();
+    }
+
     sendEmailRequest(): SendEmailRequest {
         return new SendEmailRequest(this.api, this.mapper);
     }
