@@ -30,8 +30,6 @@ export class Api {
 
         await this.auth.apply(options);
 
-        debugLog('request options=', options);
-
         const response = <SendEmailResponse>await this.http.request(options);
         return response.data;
     }

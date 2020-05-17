@@ -19,7 +19,7 @@ const main = async () => {
 
     const result = await client.simpleEmail(params);
 
-    console.log('result=', result);
+    console.log('result=', inspect(result, null, 5));
 };
 
 main().catch(err => {

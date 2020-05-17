@@ -2,7 +2,9 @@ import {Options} from './dto';
 import {RequestOptions} from '../dto/http';
 import {map} from './map'
 import axios from 'axios';
+import {debuglog, inspect} from "util";
 
+const debugLog = debuglog('coresender');
 const {version} = require('../../package.json');
 
 export class Http {
@@ -25,6 +27,8 @@ export class Http {
             data: options.body,
             timeout: this.timeout,
         };
+
+        debugLog('request options=', inspect(_options, null, 5));
 
         let response;
         try {
