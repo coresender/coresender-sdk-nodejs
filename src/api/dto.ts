@@ -1,4 +1,5 @@
 import {RequestOptions} from '../dto/http';
+import {ErrorItem, ValidationError} from '../errors/dto';
 
 export interface Http {
     request(options: RequestOptions): Promise<any>
@@ -46,7 +47,7 @@ export interface SendEmailResponseItem {
     readonly message_id: string;
     readonly custom_id: string;
     readonly status: SendEmailStatus;
-    readonly errors: any[];
+    readonly errors: ErrorItem[]|ValidationError[];
 }
 
 export interface SendEmailResponse {

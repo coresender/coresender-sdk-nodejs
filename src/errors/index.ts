@@ -34,6 +34,12 @@ export class BodyNotArray extends CoresenderError {
     public code = BodyNotArray.CODE;
 }
 
+// todo: change when sending api handle this error
+export class BodyEmptyArray extends CoresenderError {
+    public static CODE = 'BODY_EMPTY_ARRAY';
+    public code = BodyEmptyArray.CODE;
+}
+
 export class InvalidCredentials extends CoresenderError {
     public static CODE = 'INVALID_CREDENTIALS';
     public code = InvalidCredentials.CODE;
@@ -87,6 +93,11 @@ export class SendingLimitReached extends CoresenderError {
 export class TrialSendingLimitReached extends CoresenderError {
     public static CODE = 'TRIAL_SENDING_LIMIT_REACHED';
     public code = TrialSendingLimitReached.CODE;
+}
+
+export class ValidationError extends CoresenderError {
+    public static CODE = 'VALIDATION_ERROR';
+    public code = ValidationError.CODE;
 }
 
 export class InternalServerError extends CoresenderError {

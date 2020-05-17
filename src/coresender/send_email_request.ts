@@ -1,12 +1,16 @@
 import {Api, SendEmailItem} from '../api';
 import {EmailItem, SendEmailResponse} from './dto';
+import {BodyEmptyArray} from '../errors';
+import {Mapper} from "./mapper";
 
 export class SendEmailRequest {
     private api: Api;
+    private readonly mapper: Mapper;
     private readonly items: SendEmailItem[];
 
-    constructor(api: Api) {
+    constructor(api: Api, mapper: Mapper) {
         this.api = api;
+        this.mapper = mapper;
         this.items = [];
     }
 
@@ -26,21 +30,12 @@ export class SendEmailRequest {
         this.items.push(_item);
     }
 
-    async send(): Promise<SendEmailResponse[] | Error> {
+    async send(): Promise<SendEmailResponse[]> {
         if (this.items.length === 0) {
-            // @todo: throw Coresender.ERROR
-            return new Error('NO_EMAILS');
+            throw new BodyEmptyArray(`Add at least one email item to send email request`);
         }
 
         const rows = await this.api.sendEmail(this.items);
-
-        // todo: errors map ? +validation errors
-
-        return rows.map(row => ({
-            messageId: row.message_id,
-            customId: row.custom_id,
-            status: row.status,
-            errors: row.errors
-        }));
+        return rows.map(row => this.mapper.emailItem(row));
     }
 }

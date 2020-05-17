@@ -3,6 +3,7 @@
 import * as dotenv from 'dotenv';
 import {join} from 'path';
 import {Coresender} from '../src';
+import {inspect} from "util";
 
 dotenv.config({path: join(__dirname, '../.env')});
 
@@ -26,9 +27,6 @@ const main = async () => {
 
     const result = await request.send();
 
-    console.log('result=', result);
-};
+    console.log('result=', inspect(result, null, 5));};
 
-main().catch(err => {
-    console.error('main err=', err.stack);
-});
+main().catch(err => console.error('main err=', inspect(err, null, 5)));

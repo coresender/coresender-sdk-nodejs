@@ -1,7 +1,7 @@
 import {debuglog} from 'util';
 
 import * as errors from '../errors';
-import {ErrorResponse} from '../errors/dto';
+import {ErrorItem, ErrorResponse} from '../errors/dto';
 
 const debugLog = debuglog('coresender');
 
@@ -20,7 +20,12 @@ export function map(err: any) {
         const _err = <ErrorResponse>err;
         const data = _err.data;
         const code = data.code;
-        const description = Array.isArray(data.errors) && data.errors.length > 0 ? data.errors[0].description: code;
+
+        let description = code;
+        if (Array.isArray(data.errors) && data.errors.length) {
+            const errItem = <ErrorItem>data.errors[0];
+            description = errItem.description;
+        }
 
         const errFn = code2Err[code];
         if (!errFn) {

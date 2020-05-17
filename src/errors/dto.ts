@@ -1,11 +1,17 @@
+export interface ValidationError {
+    field: string;
+    value: any;
+    readonly errors: ErrorItem[];
+}
+
 export interface ErrorItem {
-    readonly code: string
-    readonly description: string;
+    code: string
+    description: string;
 }
 
 export interface ErrorData {
     readonly code: string;
-    readonly errors: ErrorItem[];
+    readonly errors: ErrorItem[]|ValidationError[];
 }
 
 export interface ErrorResponse {
