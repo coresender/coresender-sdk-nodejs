@@ -105,3 +105,7 @@ export class InternalServerError extends CoresenderError {
     public code = InternalServerError.CODE;
 }
 
+export class InvalidParameter extends CoresenderError {
+    public static CODE = 'INVALID_PARAMETER';
+    public code = InvalidParameter.CODE;
+}

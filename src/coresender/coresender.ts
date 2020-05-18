@@ -6,6 +6,7 @@ import {Api, SendEmailItem} from '../api';
 import {BodyType} from '../dict'
 import {SendEmailRequest} from './send_email_request'
 import {Mapper} from './mapper';
+import {InvalidParameter} from "../errors";
 
 const debugLog = debuglog('coresender');
 
@@ -29,6 +30,10 @@ export class Coresender {
     }
 
     async simpleEmail(params: SimpleEmail): Promise<SendEmailResponse> {
+        if (!params) {
+            throw new InvalidParameter(`This method accepts parameters of SimpleMail interface only.`);
+        }
+
         const item: SendEmailItem = {
             from: {email: params.fromEmail},
             to: [{email: params.toEmail}],

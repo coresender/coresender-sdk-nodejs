@@ -8,9 +8,12 @@ const uri = '/v1/send_email';
 describe(`client.simpleEmail() - batch tests`, () => {
     for (const t of testCases) {
         it(t.name, async () => {
-            const scope = nock(client.getBaseURL())
-                .post(uri)
-                .reply(t.mock.statusCode, t.mock.reply);
+            let scope;
+            if (t.mock) {
+                scope = nock(client.getBaseURL())
+                    .post(uri)
+                    .reply(t.mock.statusCode, t.mock.reply);
+            }
 
             let err, result;
             try {
@@ -19,13 +22,17 @@ describe(`client.simpleEmail() - batch tests`, () => {
                 err = _err;
             }
 
+            // console.log('DEBUG=>', {result, err});
+
             if (t.expectToThrow) {
                 expect(err.code).toStrictEqual(t.expectToThrow.code);
             } else {
                 t.expect(result);
             }
 
-            scope.done();
+            if (t.mock) {
+                scope.done();
+            }
         });
     }
 });

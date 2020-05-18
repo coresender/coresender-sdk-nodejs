@@ -2,9 +2,10 @@ import {EmailItemStatus} from "../../src/dict";
 import {responseAcceptAll} from '../response/send_email';
 import {responseFromErrorCode, responseHTMLError,} from "../response/common";
 import {baseParams} from "./params";
-import {BodyNotArray, HTTPError, InvalidCredentials, UnknownError} from "../../src/errors";
+import {BodyNotArray, HTTPError, InvalidCredentials, InvalidParameter, UnknownError} from "../../src/errors";
+import {TestCase} from "../test_case";
 
-const testCases = [
+const testCases: TestCase[] = [
     {
         name: `Great success response - message accepted`,
         params: baseParams,
@@ -54,6 +55,16 @@ const testCases = [
             reply: responseFromErrorCode(BodyNotArray.CODE),
         },
         expectToThrow: new BodyNotArray(),
+    },
+    {
+        name: `Null as a param`,
+        params: null,
+        expectToThrow: new InvalidParameter(),
+    },
+    {
+        name: `Undefined as a param`,
+        params: undefined,
+        expectToThrow: new InvalidParameter(),
     }
 ];
 
