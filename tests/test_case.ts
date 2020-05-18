@@ -1,4 +1,3 @@
-import {SimpleEmail} from "../src/coresender/dto";
 import {CoresenderError} from "../src/errors";
 
 export interface Mock {
@@ -8,7 +7,7 @@ export interface Mock {
 
 export interface TestCase {
     readonly name: string;
-    readonly params: SimpleEmail;
+    readonly params: any;
     readonly mock?: Mock;
     readonly expect?: Function;
     readonly expectToThrow?: CoresenderError;

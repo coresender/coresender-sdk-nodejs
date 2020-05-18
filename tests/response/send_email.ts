@@ -14,3 +14,9 @@ export function responseAcceptAll(uri, requestBody: SendEmailItem[]) {
     }
     return {meta: {}, data};
 }
+
+export function responseWithData(data) {
+    return function () {
+        return {meta: {}, data};
+    }
+}

@@ -32,6 +32,7 @@ export interface SendEmailResponse {
     readonly messageId: string;
     readonly customId: string;
     readonly status: SendEmailStatus;
+    readonly code?: string;
     readonly errors: ErrorItem[]|ValidationError[];
 }
 

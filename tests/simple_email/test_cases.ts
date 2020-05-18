@@ -4,6 +4,7 @@ import {responseFromErrorCode, responseHTMLError,} from "../response/common";
 import {baseParams} from "./params";
 import {BodyNotArray, HTTPError, InvalidCredentials, InvalidParameter, UnknownError} from "../../src/errors";
 import {TestCase} from "../test_case";
+import {SendEmailResponse} from "../../src/coresender/dto";
 
 const testCases: TestCase[] = [
     {
@@ -13,7 +14,7 @@ const testCases: TestCase[] = [
             statusCode: 200,
             reply: responseAcceptAll,
         },
-        expect: (res) => {
+        expect: (res: SendEmailResponse) => {
             expect(res.status).toStrictEqual(EmailItemStatus.ACCEPTED);
             expect(res.customId).toStrictEqual('');
             expect(res.messageId).toBeDefined();

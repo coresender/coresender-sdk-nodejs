@@ -41,8 +41,8 @@ export class Mapper {
     }
 
     renameBody(err: ValidationError, from: string) {
-        err.value = '';
         const to = err.value.text === '' ? BODY_TO_TEXT : BODY_TO_HTML;
+        err.value = '';
         this.rename(err, from, to);
     }
 
@@ -51,6 +51,7 @@ export class Mapper {
             messageId: from.message_id,
             customId: from.custom_id,
             status: from.status,
+            code: from.code,
             errors: from.errors
         };
 

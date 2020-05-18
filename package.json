@@ -8,7 +8,7 @@
     "example": "examples"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --verbose",
     "build": "tsc"
   },
   "repository": {
