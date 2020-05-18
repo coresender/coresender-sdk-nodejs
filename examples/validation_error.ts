@@ -13,7 +13,7 @@ const main = async () => {
     const client = new Coresender(process.env.ACCOUNT_ID, process.env.ACCOUNT_SECRET, {baseURL: process.env.BASE_URL});
     const request = client.sendEmailRequest();
 
-    request.push({
+    request.addToBatch({
         fromEmail: null,
         fromName: '',
         toEmail: null,
@@ -30,7 +30,7 @@ const main = async () => {
 
     const toLongString = randomBytes(512).toString('base64');
 
-    request.push({
+    request.addToBatch({
         fromEmail: 'aaa',
         fromName: toLongString,
         toEmail: 'bbb',
@@ -42,8 +42,7 @@ const main = async () => {
         bodyHTML: null,
     });
 
-    const result = await request.send();
-
+    const result = await request.execute();
 
     const res1 = result[0];
     strictEqual(res1.status, EmailItemStatus.REJECTED);

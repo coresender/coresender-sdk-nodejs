@@ -1,5 +1,5 @@
 {
-  "name": "lib-node-coresender",
+  "name": "coresender",
   "version": "1.0.0",
   "description": "Coresender SDK",
   "main": "dist/index.js",

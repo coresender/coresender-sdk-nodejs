@@ -14,7 +14,7 @@ export class SendEmailRequest {
         this.items = [];
     }
 
-    push(item: EmailItem) {
+    addToBatch(item: EmailItem) {
         const _item: SendEmailItem = {
             subject: item.subject,
             from: {email: item.fromEmail, name: item.fromName},
@@ -30,7 +30,7 @@ export class SendEmailRequest {
         this.items.push(_item);
     }
 
-    async send(): Promise<SendEmailResponse[]> {
+    async execute(): Promise<SendEmailResponse[]> {
         if (this.items.length === 0) {
             throw new BodyEmptyArray(`Add at least one email item to send email request`);
         }

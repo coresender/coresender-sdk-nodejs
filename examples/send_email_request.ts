@@ -11,21 +11,21 @@ const main = async () => {
     const client = new Coresender(process.env.ACCOUNT_ID, process.env.ACCOUNT_SECRET, {baseURL: process.env.BASE_URL});
     const request = client.sendEmailRequest();
 
-    request.push({
+    request.addToBatch({
         fromEmail: process.env.DEFAULT_FROM,
         toEmail: process.env.DEFAULT_TO,
         subject: 'send_email_request test 1',
         bodyText: 'Hello from send_email_request 1',
     });
 
-    request.push({
+    request.addToBatch({
         fromEmail: process.env.DEFAULT_FROM,
         toEmail: process.env.DEFAULT_TO,
         subject: 'send_email_request test 2',
         bodyText: 'Hello from send_email_request 2',
     });
 
-    const result = await request.send();
+    const result = await request.execute();
 
     console.log('result=', inspect(result, null, 5));};
 
