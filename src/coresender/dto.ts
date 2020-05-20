@@ -24,6 +24,7 @@ export interface EmailItem {
     readonly trackOpens?: boolean;
     readonly trackClicks?: boolean;
     readonly listUnsubscribe?: string;
+    readonly listId?: string;
 }
 
 export type SendEmailStatus = 'accepted' | 'rejected';

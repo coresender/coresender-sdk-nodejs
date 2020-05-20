@@ -1,4 +1,4 @@
-// NODE_DEBUG=coresender node_modules/.bin/ts-node examples/simple_email.ts
+// NODE_DEBUG=coresender node_modules/.bin/ts-node examples/send_email_request.ts
 
 import * as dotenv from 'dotenv';
 import {join} from 'path';

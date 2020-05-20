@@ -22,6 +22,7 @@ export class SendEmailRequest {
             body: {text: item.bodyText, html: item.bodyHTML},
             custom_id: item.customId,
             custom_id_unique: item.customIdUnique,
+            list_id: item.listId,
             list_unsubscribe: item.listUnsubscribe,
             track_clicks: item.trackClicks,
             track_opens: item.trackOpens,

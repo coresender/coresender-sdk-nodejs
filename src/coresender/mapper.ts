@@ -1,6 +1,9 @@
 import {SendEmailResponse} from "./dto";
 import {SendEmailResponseItem} from "../api/dto";
 import {ValidationError} from "../errors/dto";
+import {debuglog, inspect} from "util";
+
+const debugLog = debuglog('coresender');
 
 const TO_EMAIL_FROM = 'to[0].email';
 const TO_EMAIL_TO = 'toEmail';
@@ -37,7 +40,7 @@ export class Mapper {
 
     renameFromEmail(err: ValidationError, from: string, to: string) {
         this.rename(err, from, to);
-        err.value = err.value.email || '';
+        err.value = typeof err.value === 'object' ? err.value.email : err.value;
     }
 
     renameBody(err: ValidationError, from: string) {
@@ -54,6 +57,8 @@ export class Mapper {
             code: from.code,
             errors: from.errors
         };
+
+        debugLog('raw response', inspect(from, null, 5));
 
         for (const error of to.errors) {
             const vErr = <ValidationError>error;

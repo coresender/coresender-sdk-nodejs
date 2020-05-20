@@ -38,6 +38,7 @@ export interface SendEmailItem {
     readonly subject: string;
     readonly track_opens?: boolean;
     readonly track_clicks?: boolean;
+    readonly list_id?: string;
     readonly list_unsubscribe?: string;
 }
 

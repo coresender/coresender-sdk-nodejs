@@ -34,7 +34,6 @@ export class BodyNotArray extends CoresenderError {
     public code = BodyNotArray.CODE;
 }
 
-// todo: change when sending api handle this error
 export class BodyEmptyArray extends CoresenderError {
     public static CODE = 'BODY_EMPTY_ARRAY';
     public code = BodyEmptyArray.CODE;
@@ -63,6 +62,11 @@ export class SendingDomainNotAssigned extends CoresenderError {
 export class SendingDomainNotFound extends CoresenderError {
     public static CODE = 'SENDING_DOMAIN_NOT_FOUND';
     public code = SendingDomainNotFound.CODE;
+}
+
+export class SendingDomainNotVerified extends CoresenderError {
+    public static CODE = 'SENDING_DOMAIN_NOT_VERIFIED';
+    public code = SendingDomainNotVerified.CODE;
 }
 
 export class EmailSuppressed extends CoresenderError {

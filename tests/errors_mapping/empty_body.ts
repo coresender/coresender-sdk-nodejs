@@ -27,6 +27,7 @@ const empty_body = [
         messageId: '',
         customId: '',
         status: EmailItemStatus.REJECTED,
+        code: ValidationError.CODE,
         errors: [
             {
                 field: 'bodyText',

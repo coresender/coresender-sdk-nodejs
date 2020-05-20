@@ -35,6 +35,7 @@ export class Http {
             response = await axios(_options);
         } catch (err) {
             if (err.response) {
+                debugLog('raw response error', inspect(err.response.data, null, 5));
                 throw map(err.response.data || {});
             }
             throw map(err);
