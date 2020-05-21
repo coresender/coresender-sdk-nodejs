@@ -14,7 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "github.com:coresender/coresender-sdk-nodejs.git"
+    "url": "git+https://github.com:coresender/coresender-sdk-nodejs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/coresender/coresender-sdk-nodejs/issues"
+  },
+  "homepage": "https://github.com/coresender/coresender-sdk-nodejs",
+  "engines": {
+    "node": ">=0.10.0"
   },
   "keywords": [
     "sdk",

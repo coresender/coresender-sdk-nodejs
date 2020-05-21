@@ -8,3 +8,5 @@ README.md
 tsconfig.js
 .npmrc
 .env
+.idea
+tests_e2e
