@@ -6,3 +6,5 @@ tests
 jest.config.js
 README.md
 tsconfig.js
+.npmrc
+.env

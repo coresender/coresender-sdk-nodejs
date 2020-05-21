@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.demon.fm:ges/lib-node-coresender.git"
+    "url": "github.com:coresender/coresender-sdk-nodejs.git"
   },
   "keywords": [
     "sdk",
@@ -22,7 +22,7 @@
     "email"
   ],
   "author": "kornel.kedzierski@coresender.com",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/jest": "^25.2.2",
     "dotenv": "^8.2.0",
