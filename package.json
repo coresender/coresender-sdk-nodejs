@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/coresender/coresender-sdk-nodejs",
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=6.17.1"
   },
   "keywords": [
     "sdk",
