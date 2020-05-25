@@ -10,7 +10,8 @@
   "scripts": {
     "test": "jest --verbose tests/*",
     "teste2e": "jest --verbose tests_e2e/*",
-    "build": "rm -rf dist && tsc"
+    "build": "rm -rf dist && tsc",
+    "patch": "npm version patch && npm run build"
   },
   "repository": {
     "type": "git",
