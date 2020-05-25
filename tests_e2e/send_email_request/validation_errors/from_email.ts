@@ -21,7 +21,7 @@ const t = [
                     value: 'alice@com',
                     errors: [
                         {
-                            code: ErrorCode.EMAIL,
+                            code: ErrorCode.INVALID_EMAIL,
                             description: `The 'fromEmail' must be a valid email address.`
                         }
                     ]
