@@ -34,7 +34,7 @@ export interface SendEmailResponse {
     readonly customId: string;
     readonly status: SendEmailStatus;
     readonly code?: string;
-    readonly errors: ErrorItem[]|ValidationError[];
+    readonly errors: ErrorItem[] | ValidationError[];
 }
 
 export interface Options {

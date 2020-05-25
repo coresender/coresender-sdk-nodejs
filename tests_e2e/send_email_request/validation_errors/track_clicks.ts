@@ -3,12 +3,13 @@ import {ValidationError} from "../../../src/errors";
 
 const t = [
     {
-        n: 'Empty text body',
+        n: 'Track clicks invalid',
         p: [{
-            bodyText: '',
+            bodyText: 'Track clicks testing',
             fromEmail: 'alice@example.com',
             toEmail: 'bob@example.com',
-            subject: 'Invalid body'
+            subject: 'Track clicks',
+            trackClicks: '42',
         }],
         r: {
             messageId: '',
@@ -17,12 +18,12 @@ const t = [
             code: ValidationError.CODE,
             errors: [
                 {
-                    field: 'bodyText',
-                    value: '',
+                    field: 'trackClicks',
+                    value: '42',
                     errors: [
                         {
-                            code: ErrorCode.REQUIRED,
-                            description: `The 'bodyText' field is required.`
+                            code: ErrorCode.BOOL,
+                            description: `The 'trackClicks' must be a valid bool value.`
                         }
                     ]
                 }

@@ -1,5 +1,4 @@
 import {testCases} from "./test_cases";
-import {inspect} from 'util';
 
 describe(`client.simpleEmail() - batch tests`, () => {
     for (const t of testCases) {

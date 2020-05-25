@@ -27,6 +27,7 @@ const main = async () => {
 
     const result = await request.execute();
 
-    console.log('result=', inspect(result, null, 5));};
+    console.log('result=', inspect(result, null, 5));
+};
 
 main().catch(err => console.error('main err=', inspect(err, null, 5)));

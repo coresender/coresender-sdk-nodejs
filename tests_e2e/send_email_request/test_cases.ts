@@ -15,7 +15,7 @@ const customId = uuidv4();
 const testCases: TestCase[] = [
     {
         name: `Invalid credentials response`,
-        skip: true,
+        // skip: true,
         client: new Coresender(process.env.ACCOUNT_ID, 'invalid-secret', {baseURL: process.env.BASE_URL}),
         params: [{
             bodyText: 'test',
@@ -27,7 +27,7 @@ const testCases: TestCase[] = [
     },
     {
         name: `CustomID Unique verification in one request`,
-        skip: true,
+        // skip: true,
         client: defaultClient,
         params: [
             {

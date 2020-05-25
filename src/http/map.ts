@@ -6,10 +6,10 @@ import {ErrorItem, ErrorResponse} from '../errors/dto';
 const debugLog = debuglog('coresender');
 
 const code2Err = {
-  [errors.InvalidCredentials.CODE]: (description) => new errors.InvalidCredentials(description),
-  [errors.BodyNotArray.CODE]: (description) => new errors.BodyNotArray(description),
-  [errors.InvalidJSON.CODE]: (description) => new errors.InvalidJSON(description),
-  [errors.InternalServerError.CODE]: (description) => new errors.InternalServerError(description),
+    [errors.InvalidCredentials.CODE]: (description) => new errors.InvalidCredentials(description),
+    [errors.BodyNotArray.CODE]: (description) => new errors.BodyNotArray(description),
+    [errors.InvalidJSON.CODE]: (description) => new errors.InvalidJSON(description),
+    [errors.InternalServerError.CODE]: (description) => new errors.InternalServerError(description),
 };
 
 export function map(err: any) {

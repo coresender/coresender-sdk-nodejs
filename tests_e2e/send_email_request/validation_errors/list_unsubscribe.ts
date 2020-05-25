@@ -3,12 +3,13 @@ import {ValidationError} from "../../../src/errors";
 
 const t = [
     {
-        n: 'Empty text body',
+        n: 'List unsubscribe invalid',
         p: [{
-            bodyText: '',
+            bodyText: 'List unsubscribe testing',
             fromEmail: 'alice@example.com',
             toEmail: 'bob@example.com',
-            subject: 'Invalid body'
+            subject: 'List unsubscribe',
+            listUnsubscribe: 'foo'
         }],
         r: {
             messageId: '',
@@ -17,12 +18,12 @@ const t = [
             code: ValidationError.CODE,
             errors: [
                 {
-                    field: 'bodyText',
-                    value: '',
+                    field: 'listUnsubscribe',
+                    value: 'foo',
                     errors: [
                         {
-                            code: ErrorCode.REQUIRED,
-                            description: `The 'bodyText' field is required.`
+                            code: ErrorCode.INVALID_LIST_UNSUBSCRIBE,
+                            description: `The 'listUnsubscribe' must be an valid url or email address.`
                         }
                     ]
                 }

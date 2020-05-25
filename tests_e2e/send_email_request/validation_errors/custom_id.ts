@@ -1,28 +1,32 @@
 import {EmailItemStatus, ErrorCode} from "../../../src/dict";
 import {ValidationError} from "../../../src/errors";
+import {randomBytes} from "crypto";
+
+const longString = randomBytes(256).toString('hex');
 
 const t = [
     {
-        n: 'Empty text body',
+        n: 'Custom id to long',
         p: [{
-            bodyText: '',
+            bodyText: 'customID testing',
             fromEmail: 'alice@example.com',
             toEmail: 'bob@example.com',
-            subject: 'Invalid body'
+            subject: 'customID',
+            customId: longString
         }],
         r: {
             messageId: '',
-            customId: '',
+            customId: longString,
             status: EmailItemStatus.REJECTED,
             code: ValidationError.CODE,
             errors: [
                 {
-                    field: 'bodyText',
-                    value: '',
+                    field: 'customId',
+                    value: longString,
                     errors: [
                         {
-                            code: ErrorCode.REQUIRED,
-                            description: `The 'bodyText' field is required.`
+                            code: ErrorCode.MAX,
+                            description: `The 'customId' may not be greater than 255  characters.`
                         }
                     ]
                 }

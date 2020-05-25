@@ -15,6 +15,7 @@ export class UnknownError extends CoresenderError {
 
 export class ConnectionError extends CoresenderError {
     public static CODE = 'CONNECTION_ERROR';
+
     constructor(message: string, code: string) {
         super(message);
         this.code = code;
@@ -23,6 +24,7 @@ export class ConnectionError extends CoresenderError {
 
 export class HTTPError extends CoresenderError {
     public static CODE = 'HTTP_ERROR';
+
     constructor(message: string, code: string) {
         super(message);
         this.code = code;

@@ -49,7 +49,7 @@ export interface SendEmailResponseItem {
     readonly custom_id: string;
     readonly status: SendEmailStatus;
     readonly code?: string;
-    readonly errors: ErrorItem[]|ValidationError[];
+    readonly errors: ErrorItem[] | ValidationError[];
 }
 
 export interface SendEmailResponse {

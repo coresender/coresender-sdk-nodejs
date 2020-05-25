@@ -11,7 +11,7 @@ export interface ErrorItem {
 
 export interface ErrorData {
     readonly code: string;
-    readonly errors: ErrorItem[]|ValidationError[];
+    readonly errors: ErrorItem[] | ValidationError[];
 }
 
 export interface ErrorResponse {

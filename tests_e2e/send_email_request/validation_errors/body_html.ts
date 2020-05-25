@@ -3,9 +3,9 @@ import {ValidationError} from "../../../src/errors";
 
 const t = [
     {
-        n: 'Empty text body',
+        n: 'Empty html body',
         p: [{
-            bodyText: '',
+            bodyHTML: '',
             fromEmail: 'alice@example.com',
             toEmail: 'bob@example.com',
             subject: 'Invalid body'

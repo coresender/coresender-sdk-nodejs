@@ -3,12 +3,12 @@ import {ValidationError} from "../../../src/errors";
 
 const t = [
     {
-        n: 'Empty text body',
+        n: 'Empty subject',
         p: [{
-            bodyText: '',
+            bodyText: 'test',
             fromEmail: 'alice@example.com',
             toEmail: 'bob@example.com',
-            subject: 'Invalid body'
+            subject: ''
         }],
         r: {
             messageId: '',
@@ -17,12 +17,12 @@ const t = [
             code: ValidationError.CODE,
             errors: [
                 {
-                    field: 'bodyText',
+                    field: 'subject',
                     value: '',
                     errors: [
                         {
                             code: ErrorCode.REQUIRED,
-                            description: `The 'bodyText' field is required.`
+                            description: `The 'subject' field is required.`
                         }
                     ]
                 }

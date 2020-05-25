@@ -1,14 +1,18 @@
 import {EmailItemStatus, ErrorCode} from "../../../src/dict";
 import {ValidationError} from "../../../src/errors";
+import {randomBytes} from "crypto";
+
+const longString = randomBytes(256).toString('hex');
 
 const t = [
     {
-        n: 'Empty text body',
+        n: 'List id invalid',
         p: [{
-            bodyText: '',
+            bodyText: 'List id testing',
             fromEmail: 'alice@example.com',
             toEmail: 'bob@example.com',
-            subject: 'Invalid body'
+            subject: 'List unsubscribe',
+            listId: longString
         }],
         r: {
             messageId: '',
@@ -17,12 +21,12 @@ const t = [
             code: ValidationError.CODE,
             errors: [
                 {
-                    field: 'bodyText',
-                    value: '',
+                    field: 'listId',
+                    value: longString,
                     errors: [
                         {
-                            code: ErrorCode.REQUIRED,
-                            description: `The 'bodyText' field is required.`
+                            code: ErrorCode.MAX,
+                            description: `The 'listId' may not be greater than 255  characters.`
                         }
                     ]
                 }

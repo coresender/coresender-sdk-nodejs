@@ -3,12 +3,14 @@ import {ValidationError} from "../../../src/errors";
 
 const t = [
     {
-        n: 'Empty text body',
+        n: 'Custom id unique invalid',
         p: [{
-            bodyText: '',
+            bodyText: 'customID unique testing',
             fromEmail: 'alice@example.com',
             toEmail: 'bob@example.com',
-            subject: 'Invalid body'
+            subject: 'customID',
+            customId: '',
+            customIdUnique: '42'
         }],
         r: {
             messageId: '',
@@ -17,12 +19,12 @@ const t = [
             code: ValidationError.CODE,
             errors: [
                 {
-                    field: 'bodyText',
-                    value: '',
+                    field: 'customIdUnique',
+                    value: '42',
                     errors: [
                         {
-                            code: ErrorCode.REQUIRED,
-                            description: `The 'bodyText' field is required.`
+                            code: ErrorCode.BOOL,
+                            description: `The 'customIdUnique' must be a valid bool value.`
                         }
                     ]
                 }
