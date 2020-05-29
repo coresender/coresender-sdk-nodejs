@@ -3,7 +3,8 @@
 import * as dotenv from 'dotenv';
 import {join} from 'path';
 import {Coresender} from '../src';
-import {inspect} from "util";
+import {inspect} from 'util';
+import {strictEqual} from 'assert';
 
 dotenv.config({path: join(__dirname, '../.env')});
 
@@ -25,9 +26,13 @@ const main = async () => {
         bodyText: 'Hello from send_email_request 2',
     });
 
-    const result = await request.execute();
+    const response = await request.execute();
 
-    console.log('result=', inspect(result, null, 5));
+    strictEqual(response.allAccepted(), true);
+    strictEqual(response.getItems().length, 2);
+
+    console.log('result=', inspect(response, null, 5));
+    console.log('request time=', response.getMeta()['rq_time']);
 };
 
 main().catch(err => console.error('main err=', inspect(err, null, 5)));

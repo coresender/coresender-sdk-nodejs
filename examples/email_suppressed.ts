@@ -1,4 +1,4 @@
-// NODE_DEBUG=coresender node_modules/.bin/ts-node examples/send_email_request.ts
+// NODE_DEBUG=coresender node_modules/.bin/ts-node examples/email_suppressed.ts
 
 import * as dotenv from 'dotenv';
 import {join} from 'path';
@@ -19,14 +19,13 @@ const main = async () => {
     };
 
     const result = await client.simpleEmail(params);
+    console.log('result=', inspect(result, null, 5));
 
     strictEqual(result.status, EmailItemStatus.REJECTED);
 
     const errItem = <ErrorTypes.ErrorItem>result.errors[0];
 
     strictEqual(errItem.code, Errors.EmailSuppressed.CODE);
-
-    console.log('result=', inspect(result, null, 5));
 };
 
 main().catch(err => console.error('main err=', inspect(err, null, 5)));

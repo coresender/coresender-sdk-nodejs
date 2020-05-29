@@ -1,4 +1,4 @@
-import {CoresenderError} from "../src/errors";
+import {CoresenderError} from "../src/error";
 import {Coresender} from '../src/index'
 import {EmailItem} from "../src/coresender/dto";
 

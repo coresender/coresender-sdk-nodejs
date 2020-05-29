@@ -16,7 +16,7 @@ export class Http {
         this.timeout = options.timeout ? options.timeout : this.timeout;
     }
 
-    async request(options: RequestOptions): Promise<any> {
+    async request(options: RequestOptions): Promise<{ response: any, httpStatus: number, meta?: any }> {
         const _options = {
             method: options.method ? options.method : 'GET',
             url: options.url,
@@ -40,6 +40,6 @@ export class Http {
             }
             throw map(err);
         }
-        return response.data;
+        return {response: response.data, httpStatus: response.status, meta: response.meta};
     }
 }

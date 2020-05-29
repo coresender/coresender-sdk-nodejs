@@ -1,8 +1,8 @@
 import {RequestOptions} from '../dto/http';
-import {ErrorItem, ValidationError} from '../errors/dto';
+import {ErrorItem, ValidationError} from '../error/dto';
 
 export interface Http {
-    request(options: RequestOptions): Promise<any>
+    request(options: RequestOptions): Promise<{ response: any, httpStatus: number, meta?: any }>
 }
 
 export interface Auth {

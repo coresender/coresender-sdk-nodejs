@@ -1,7 +1,7 @@
 import {debuglog} from 'util';
 
-import * as errors from '../errors';
-import {ErrorItem, ErrorResponse} from '../errors/dto';
+import * as errors from '../error';
+import {ErrorItem, ErrorResponse} from '../error/dto';
 
 const debugLog = debuglog('coresender');
 

@@ -3,8 +3,8 @@ import * as dotenv from 'dotenv';
 import {join} from 'path';
 import {Coresender, EmailItemStatus, Errors} from '../../src';
 import {v4 as uuidv4} from 'uuid';
-import {SendEmailResponse} from '../../src/coresender/dto';
-import {InvalidCredentials} from '../../src/errors';
+import {SendEmailResponseItem} from '../../src/coresender/dto';
+import {InvalidCredentials} from '../../src/error';
 import {validation_errors} from './validation_errors';
 
 dotenv.config({path: join(__dirname, '../../.env')});
@@ -47,7 +47,7 @@ const testCases: TestCase[] = [
                 customIdUnique: true,
             },
         ],
-        expect: (res: SendEmailResponse[]) => {
+        expect: (res: SendEmailResponseItem[]) => {
             const r1 = res[0];
             expect(r1.status).toStrictEqual(EmailItemStatus.ACCEPTED);
             expect(r1.messageId).toBeDefined();
@@ -72,7 +72,7 @@ const testCases: TestCase[] = [
                 subject: `Unassigned sending domain`,
             },
         ],
-        expect: (res: SendEmailResponse[]) => {
+        expect: (res: SendEmailResponseItem[]) => {
             const r1 = res[0];
             expect(r1.status).toStrictEqual(EmailItemStatus.REJECTED);
             expect(r1.messageId).toBe('');
@@ -88,7 +88,7 @@ for (const v of validation_errors) {
         name: v.n,
         client: defaultClient,
         params: v.p,
-        expect: (res: SendEmailResponse[]) => {
+        expect: (res: SendEmailResponseItem[]) => {
             const r = res[0];
             expect(r).toMatchObject(v.r);
         }

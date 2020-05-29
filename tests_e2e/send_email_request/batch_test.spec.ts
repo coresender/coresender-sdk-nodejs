@@ -25,7 +25,7 @@ describe(`client.simpleEmail() - batch tests`, () => {
             if (t.expectToThrow) {
                 expect(err.code).toStrictEqual(t.expectToThrow.code);
             } else {
-                t.expect(result);
+                t.expect(result.getItems());
             }
         });
     }

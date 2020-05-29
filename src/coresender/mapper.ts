@@ -1,6 +1,6 @@
-import {SendEmailResponse} from "./dto";
-import {SendEmailResponseItem} from "../api/dto";
-import {ValidationError} from "../errors/dto";
+import {SendEmailResponseItem} from "./dto";
+import {SendEmailResponseItem as ApiSendEmailResponseItem} from "../api/dto";
+import {ValidationError} from "../error/dto";
 import {debuglog, inspect} from "util";
 
 const debugLog = debuglog('coresender');
@@ -64,7 +64,7 @@ export class Mapper {
         this.rename(err, from, to);
     }
 
-    emailItem(from: SendEmailResponseItem): SendEmailResponse {
+    emailItem(from: ApiSendEmailResponseItem): SendEmailResponseItem {
         const to = {
             messageId: from.message_id,
             customId: from.custom_id,

@@ -44,11 +44,13 @@ const main = async () => {
 
     const result = await request.execute();
 
-    const res1 = result[0];
+    const res1 = result.getItems()[0];
     strictEqual(res1.status, EmailItemStatus.REJECTED);
     let err = <ErrorTypes.ValidationError>res1.errors[0];
     strictEqual(err.field, 'subject');
     strictEqual(err.errors[0].code, ErrorCode.REQUIRED);
+
+    strictEqual(result.allAccepted(), false);
 
     console.log('result=', inspect(result, null, 5));
 };

@@ -1,12 +1,12 @@
 import {debuglog} from 'util'
-import {Options, SendEmailResponse, SimpleEmail} from './dto';
+import {Options, SendEmailResponseItem, SimpleEmail} from './dto';
 import {Http} from '../http';
 import {Auth} from '../auth';
 import {Api, SendEmailItem} from '../api';
 import {BodyType} from '../dict'
 import {SendEmailRequest} from './send_email_request'
 import {Mapper} from './mapper';
-import {InvalidParameter} from "../errors";
+import {InvalidParameter} from "../error";
 
 const debugLog = debuglog('coresender');
 
@@ -29,7 +29,7 @@ export class Coresender {
         return new SendEmailRequest(this.api, this.mapper);
     }
 
-    async simpleEmail(params: SimpleEmail): Promise<SendEmailResponse> {
+    async simpleEmail(params: SimpleEmail): Promise<SendEmailResponseItem> {
         if (!params) {
             throw new InvalidParameter(`This method accepts parameters of SimpleMail interface only.`);
         }
@@ -41,9 +41,7 @@ export class Coresender {
             body: params.bodyType === BodyType.HTML ? {html: params.body} : {text: params.body},
         };
 
-        const result = await this.api.sendEmail([item]);
-        const row = result[0];
-
-        return this.mapper.emailItem(row);
+        const {items} = await this.api.sendEmail([item]);
+        return this.mapper.emailItem(items[0]);
     }
 }

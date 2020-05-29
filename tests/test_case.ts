@@ -1,4 +1,4 @@
-import {CoresenderError} from "../src/errors";
+import {CoresenderError} from "../src/error";
 
 export interface Mock {
     readonly statusCode: number;

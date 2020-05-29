@@ -1,5 +1,5 @@
 import {BodyType as EBodyType} from '../dict'
-import {ErrorItem, ValidationError} from "../errors/dto";
+import {ErrorItem, ValidationError} from "../error/dto";
 
 export interface SimpleEmail {
     readonly fromEmail: string;
@@ -29,7 +29,7 @@ export interface EmailItem {
 
 export type SendEmailStatus = 'accepted' | 'rejected';
 
-export interface SendEmailResponse {
+export interface SendEmailResponseItem {
     readonly messageId: string;
     readonly customId: string;
     readonly status: SendEmailStatus;

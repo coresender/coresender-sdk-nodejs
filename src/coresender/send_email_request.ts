@@ -1,7 +1,8 @@
 import {Api, SendEmailItem} from '../api';
-import {EmailItem, SendEmailResponse} from './dto';
-import {BodyEmptyArray} from '../errors';
+import {EmailItem} from './dto';
+import {BodyEmptyArray} from '../error';
 import {Mapper} from "./mapper";
+import {SendEmailResponse} from "../response/send_email";
 
 export class SendEmailRequest {
     private api: Api;
@@ -31,12 +32,14 @@ export class SendEmailRequest {
         this.items.push(_item);
     }
 
-    async execute(): Promise<SendEmailResponse[]> {
+    async execute(): Promise<SendEmailResponse> {
         if (this.items.length === 0) {
             throw new BodyEmptyArray(`Add at least one email item to send email request`);
         }
 
-        const rows = await this.api.sendEmail(this.items);
-        return rows.map(row => this.mapper.emailItem(row));
+        const {items, httpStatus, meta} = await this.api.sendEmail(this.items);
+        const _items = items.map(row => this.mapper.emailItem(row));
+
+        return new SendEmailResponse(_items, httpStatus, meta);
     }
 }

@@ -1,5 +1,5 @@
 import {EmailItemStatus, ErrorCode} from "../../../src/dict";
-import {ValidationError} from "../../../src/errors";
+import {ValidationError} from "../../../src/error";
 import {randomBytes} from "crypto";
 
 const longString = randomBytes(256).toString('hex');
