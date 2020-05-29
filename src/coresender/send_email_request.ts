@@ -5,9 +5,9 @@ import {Mapper} from "./mapper";
 import {SendEmailResponse} from "../response/send_email";
 
 export class SendEmailRequest {
-    private api: Api;
+    private readonly api: Api;
     private readonly mapper: Mapper;
-    private readonly items: SendEmailItem[];
+    private items: SendEmailItem[];
 
     constructor(api: Api, mapper: Mapper) {
         this.api = api;
@@ -39,6 +39,7 @@ export class SendEmailRequest {
 
         const {items, httpStatus, meta} = await this.api.sendEmail(this.items);
         const _items = items.map(row => this.mapper.emailItem(row));
+        this.items = [];
 
         return new SendEmailResponse(_items, httpStatus, meta);
     }
