@@ -1,31 +1,20 @@
-# Coresender node.js SDK
+# Coresender Node.js SDK
 
-One Paragraph of project description goes here
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+This is the officially supported Node.js library for [Coresender](https://coresender.com). It allows you to quickly and easily integrate with our API and improve your email deliverability.
 
 ### Prerequisites
 
 What things you need to install the software and how to install them
 
-```
-Node.js v6 or higher
-```
+* Node.js v6 or higher
+* The Coresender service. You can start with a free 100 emails/month developer plan and move to one of our [pricing plans](https://coresender.com/pricing) when you're done.
 
-### Installing
+### Installation
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
+Install the library with
 ```bash
-$ npm install --save coresender
+npm install --save coresender
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
-
 
 ### Usage
 
@@ -81,3 +70,13 @@ request.addToBatch({
 
 const result = await request.execute();
 ```
+
+### Contribute
+
+The Coresender Node.js SDK is an open-source project released under MIT license. We welcome any contributions!
+
+You can help by:
+* Writing new code
+* Creating issues if you find problems
+* Helping others with their issues
+* Reviewing PRs
