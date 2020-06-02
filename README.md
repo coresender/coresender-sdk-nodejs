@@ -19,8 +19,8 @@ npm install --save coresender
 ### Usage
 
 ##### Simple email
-```typescript
-import {Coresender, BodyType} from 'coresender';
+```javascript
+const {Coresender, BodyType} = require('coresender');
 
 const client = new Coresender('account_id', 'account_secret');
 
@@ -36,8 +36,8 @@ const result = await client.simpleEmail(params);
 ```
 
 ##### Email request
-```typescript
-import {Coresender} from 'coresender';
+```javascript
+const {Coresender} = require('coresender');
 
 const client = new Coresender('account_id', 'account_secret');
 
