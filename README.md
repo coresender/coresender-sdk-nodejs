@@ -35,6 +35,16 @@ const params = {
 const result = await client.simpleEmail(params);
 ```
 
+###### Result
+```javascript
+{
+  messageId: 'd2a82708-2067-4b3b-8866-b33355036fde',
+  customId: '',
+  status: 'accepted',
+  errors: []
+}
+```
+
 ##### Email request
 ```javascript
 const {Coresender} = require('coresender');
@@ -69,6 +79,42 @@ request.addToBatch({
 });
 
 const result = await request.execute();
+```
+
+###### Result object
+```javascript
+result.allAccepted() // returns TRUE if all messages was accepted
+result.getItems() // returns array of status objects for all messages
+
+// Example result from getItems() method
+[
+  {
+    messageId: 'ff191365-316e-41e0-a185-5c7433d92b8a',
+    customId: '',
+    status: 'accepted',
+    errors: []
+  },
+  {
+    messageId: '',
+    customId: '',
+    status: 'rejected',
+    code: 'EMAIL_SUPPRESSED',
+    errors: [
+      {
+        code: 'EMAIL_SUPPRESSED',
+        description: "The recipient's email address suppressed@email.com is on a suppression list"
+      }
+    ]
+  }
+]
+```
+
+
+### Debugging
+To enable debug logging for coresender module set NODE_DEBUG environment variable to coresender.
+
+```bash
+$ NODE_DEBUG=coresender node app.js
 ```
 
 ### Contribute
