@@ -1,6 +1,6 @@
 import {testCases} from "./test_cases";
 
-describe(`client.simpleEmail() - batch tests`, () => {
+describe(`client.sendEmailRequest() - batch tests`, () => {
     for (const t of testCases) {
         it(t.name, async () => {
             if (t.skip) {

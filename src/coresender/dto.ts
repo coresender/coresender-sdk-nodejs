@@ -11,6 +11,11 @@ export interface SimpleEmail {
 
 export type BodyType = EBodyType.HTML | EBodyType.TEXT;
 
+export interface ReplyTo {
+    email: string;
+    name?: string;
+}
+
 export interface EmailItem {
     readonly fromEmail: string;
     readonly fromName?: string;
@@ -25,6 +30,7 @@ export interface EmailItem {
     readonly trackClicks?: boolean;
     readonly listUnsubscribe?: string;
     readonly listId?: string;
+    readonly replyTo?: ReplyTo[];
 }
 
 export type SendEmailStatus = 'accepted' | 'rejected';

@@ -27,6 +27,7 @@ export class SendEmailRequest {
             list_unsubscribe: item.listUnsubscribe,
             track_clicks: item.trackClicks,
             track_opens: item.trackOpens,
+            reply_to: (item.replyTo || []).map(r => ({name: r.name, email: r.email})),
         };
 
         this.items.push(_item);

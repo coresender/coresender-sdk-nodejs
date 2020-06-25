@@ -80,6 +80,23 @@ const testCases: TestCase[] = [
             expect(r1.code).toStrictEqual(Errors.SendingDomainNotVerified.CODE);
         }
     },
+    {
+        name: `Support reply to param`,
+        client: defaultClient,
+        params: [
+            {
+                bodyText: 'test',
+                fromEmail: process.env.DEFAULT_FROM,
+                toEmail: process.env.DEFAULT_TO,
+                subject: `Reply to test`,
+                replyTo: [{email: 'support@coresender.com'}, {email: 'support-vip@coresender.com', name: 'VIP support'}]
+            },
+        ],
+        expect: (res: SendEmailResponseItem[]) => {
+            const r1 = res[0];
+            expect(r1.status).toStrictEqual(EmailItemStatus.ACCEPTED);
+        }
+    },
 ];
 
 

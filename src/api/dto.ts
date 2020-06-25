@@ -29,6 +29,11 @@ interface SendEmailFrom {
     readonly name?: string;
 }
 
+interface ReplyTo {
+    readonly email: string;
+    readonly name?: string;
+}
+
 export interface SendEmailItem {
     readonly body: SendEmailBody;
     readonly to: SendEmailTo[];
@@ -40,6 +45,7 @@ export interface SendEmailItem {
     readonly track_clicks?: boolean;
     readonly list_id?: string;
     readonly list_unsubscribe?: string;
+    readonly reply_to?: ReplyTo[];
 }
 
 export type SendEmailStatus = 'accepted' | 'rejected';

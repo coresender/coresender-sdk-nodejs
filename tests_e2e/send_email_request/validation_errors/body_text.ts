@@ -17,15 +17,25 @@ const t = [
             code: ValidationError.CODE,
             errors: [
                 {
+                    field: 'bodyHTML',
+                    value: '',
+                    errors: [
+                        {
+                            code: ErrorCode.REQUIRED,
+                            description: `The 'bodyHTML' can't be empty when 'bodyText' is empty.`
+                        }
+                    ]
+                },
+                {
                     field: 'bodyText',
                     value: '',
                     errors: [
                         {
                             code: ErrorCode.REQUIRED,
-                            description: `The 'bodyText' field is required.`
+                            description: `The 'bodyText' can't be empty when 'bodyHTML' is empty.`
                         }
                     ]
-                }
+                },
             ]
         }
     },

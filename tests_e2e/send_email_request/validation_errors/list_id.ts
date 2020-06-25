@@ -26,7 +26,7 @@ const t = [
                     errors: [
                         {
                             code: ErrorCode.MAX,
-                            description: `The 'listId' may not be greater than 255  characters.`
+                            description: `The 'listId' may not be greater than 255 characters.`
                         }
                     ]
                 }

@@ -29,6 +29,10 @@ const LIST_UNSUBSCRIBE_FROM = 'list_unsubscribe';
 const LIST_UNSUBSCRIBE_TO = 'listUnsubscribe';
 const LIST_ID_FROM = 'list_id';
 const LIST_ID_TO = 'listId';
+const BODY_HTML_FROM = 'body.html';
+const BODY_HTML_TO = 'bodyHTML';
+const BODY_TEXT_FROM = 'body.text';
+const BODY_TEXT_TO = 'bodyText';
 
 export class Mapper {
     private readonly map = {
@@ -44,10 +48,22 @@ export class Mapper {
         [FROM_EMAIL_FROM]: (err) => this.renameFromEmail(err, FROM_EMAIL_FROM, FROM_EMAIL_TO),
         [FROM_NAME_FROM]: (err) => this.rename(err, FROM_NAME_FROM, FROM_NAME_TO),
         [BODY_FROM]: (err) => this.renameBody(err, BODY_FROM),
+        [BODY_HTML_FROM]: (err) => {
+            this.rename(err, BODY_HTML_FROM, BODY_HTML_TO);
+            this.renameDescription(err, BODY_TEXT_FROM, BODY_TEXT_TO);
+        },
+        [BODY_TEXT_FROM]: (err) => {
+            this.rename(err, BODY_TEXT_FROM, BODY_TEXT_TO);
+            this.renameDescription(err, BODY_HTML_FROM, BODY_HTML_TO);
+        },
     };
 
     rename(err: ValidationError, from: string, to: string) {
         err.field = to;
+        this.renameDescription(err, from, to);
+    }
+
+    renameDescription(err: ValidationError, from: string, to: string) {
         for (const e of err.errors) {
             e.description = e.description.replace(from, to);
         }
