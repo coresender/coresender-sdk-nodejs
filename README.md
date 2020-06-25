@@ -76,6 +76,7 @@ request.addToBatch({
     customId: '123e4567-e89b-12d3-a456-426614174000',
     customIdUnique: true,
     bodyHTML: '<div>Nice to meet you.</div>',
+    replyTo: [{email: 'support@coresender.com', name: 'Support'}],
 });
 
 const result = await request.execute();
